@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "sessions#new"
 
+  resources :templates
+
   resources :role_requests
 
   get "test", to: "test#list_users"
