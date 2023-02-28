@@ -1,0 +1,13 @@
+<%= form_with url: sessions_path do |form| %>
+  <div>
+    <%= form.label :username, "Username" %>
+    <%= form.text_field :username, placeholder: "username" %>
+  </div>
+
+  <div>
+    <%= form.label :password, "Password" %>
+    <%= form.text_field :password, placeholder: "password" %>
+  </div>
+
+  <%= submit_tag "Submit", data: { disable_with: "Submitting..." } %>
+<% end %>
