@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :role_requests
 
+  get "test", to: "test#list_users"
+
   resources :sessions, only: [:new, :create, :destroy]
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
