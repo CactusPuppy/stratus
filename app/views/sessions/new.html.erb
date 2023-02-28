@@ -9,5 +9,9 @@
     <%= form.text_field :password, placeholder: "password" %>
   </div>
 
+  <% if flash[:alert] %>
+    <div style="color: red;"><%= flash[:alert] %></style>
+  <% end %>
+
   <%= submit_tag "Submit", data: { disable_with: "Submitting..." } %>
 <% end %>

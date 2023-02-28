@@ -1,0 +1,7 @@
+<main>
+  <% if current_user.manager? %>
+    <p>You are a manager</p>
+  <% else %>
+    <p>You are a normal user</p>
+  <% end %>
+</main>
