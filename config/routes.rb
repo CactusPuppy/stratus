@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :role_requests
 
   get "test", to: "test#list_users"
+  get "undo_demo", to: "test#clear_employee1"
 
   resources :sessions, only: [:new, :create, :destroy]
   get "login", to: "sessions#new", as: "login"
