@@ -1,0 +1,8 @@
+<%= form_with model: @role_request do |form| %>
+  <div>
+    <%= form.label :requested_template_id, "Role to Request" %>
+    <%= form.text_field :requested_template_id, type: :number %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

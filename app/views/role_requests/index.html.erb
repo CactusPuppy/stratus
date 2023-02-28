@@ -1,7 +1,14 @@
 <main>
+  <% if flash[:notice] %>
+    <p style="color: green;"><%= flash[:notice] %></p>
+  <% end %>
   <% if current_user.manager? %>
     <p>You are a manager</p>
+    <%  %>
   <% else %>
     <p>You are a normal user</p>
   <% end %>
+  <%= button_to "New Request", new_role_request_path, method: :get %>
+  <h2>Requests awaiting approval:</h2>
+  <%= render @role_requests %>
 </main>

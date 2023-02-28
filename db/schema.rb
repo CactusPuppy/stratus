@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_062255) do
-  create_table "requests", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_202120) do
+  create_table "role_requests", force: :cascade do |t|
     t.integer "request_state"
     t.integer "requested_template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "requester_user_id"
+    t.integer "approver_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -24,6 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_062255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.index ["username"], name: "index_users_on_username"
   end
 
+  add_foreign_key "role_requests", "users", column: "approver_user_id"
+  add_foreign_key "role_requests", "users", column: "requester_user_id"
 end
