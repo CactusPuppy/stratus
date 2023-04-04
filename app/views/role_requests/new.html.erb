@@ -1,7 +1,21 @@
+<% if flash[:error] %>
+    <p style="color: red;"><%= flash[:error] %></p>
+
+<% end %>
+
 <%= form_with model: @role_request do |form| %>
   <div>
     <%= form.label :requested_template_id, "Role to Request" %>
-    <%= form.text_field :requested_template_id, type: :number %>
+    <%= form.select :requested_template_id, options_for_select([
+      ["RDS Read-only", 1],
+      ["RDS Read-write", 2],
+      ["RDS Administrator", 3]
+    ]) %>
+  </div>
+
+  <div style="margin-top:2em;margin-bottom:2em;">
+    <%= form.label :description, "Description" %>
+    <div><%= form.text_area :description, size: "30x10" %></div>
   </div>
 
   <%= form.submit %>

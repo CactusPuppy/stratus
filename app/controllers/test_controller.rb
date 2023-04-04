@@ -10,6 +10,14 @@ class TestController < ApplicationController
     end
   end
 
+  def list_roles
+    respond_to do |format|
+      format.json {
+        render json: $iam_client.list_roles({ path_prefix: "/" })
+      }
+    end
+  end
+
   def clear_employee1
     $iam_client.delete_user_policy({
       policy_name: "Stratus_RDSReadOnly",

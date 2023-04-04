@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_202120) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_04_223942) do
   create_table "role_requests", force: :cascade do |t|
     t.integer "request_state"
     t.integer "requested_template_id"
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_202120) do
     t.datetime "updated_at", null: false
     t.integer "requester_user_id"
     t.integer "approver_user_id"
+    t.string "description"
+    t.string "decision_reasoning"
   end
 
   create_table "users", force: :cascade do |t|

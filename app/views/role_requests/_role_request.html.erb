@@ -1,4 +1,18 @@
 <div style="border-radius: 0.25rem;border-width:0.1rem;border-color:black;border-style:solid;">
   <p>Requesting user: <%= role_request.requester_user.username %></p>
-  <p>Requested role: <%= role_request.requested_template_id %></p>
+  <p>Requested role: <%= {1 => "RDS Read-only", 2 => "RDS Read-write", 3 => "RDS Administrator"}[role_request.requested_template_id] %></p>
+  <p>Request description:</p>
+  <p style="margin-left: 0.5rem;font-style:italic"><%= role_request.description || "<code>No description provided</code>".html_safe %></p>
+
+  <% if role_request.request_state == "completed" %>
+    <p>Approved by: <%= role_request.approver_user&.username || "" %></p>
+  <% elsif role_request.request_state == "rejected" %>
+    <p>Rejected by: <%= role_request.approver_user&.username || "" %></p>
+  <% end %>
+
+  <% if @current_user && @current_user.manager? %>
+    <%= button_to "Approve", approve_request_path(role_request_id: role_request.id) %>
+    <br>
+    <%= button_to "Reject", reject_request_path(role_request_id: role_request.id) %>
+  <% end %>
 </div>

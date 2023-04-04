@@ -1,4 +1,7 @@
 <main>
+  <% if flash[:error] %>
+    <p style="color: red;"><%= flash[:error] %></p>
+  <% end %>
   <% if flash[:notice] %>
     <p style="color: green;"><%= flash[:notice] %></p>
   <% end %>
@@ -11,4 +14,10 @@
   <%= button_to "New Request", new_role_request_path, method: :get %>
   <h2>Requests awaiting approval:</h2>
   <%= render @role_requests %>
+
+  <h2>Approved requests:</h2>
+  <%= render @approved_role_requests %>
+
+  <h2>Rejected requests:</h2>
+  <%= render @rejected_role_requests %>
 </main>
