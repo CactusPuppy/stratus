@@ -70,7 +70,7 @@ class RoleRequestsController < ApplicationController
       return
     end
 
-    @role_request.request_status = :completed
+    @role_request.request_state = :completed
     @role_request.approver_user = @current_user
     @role_request.save
 
@@ -80,7 +80,7 @@ class RoleRequestsController < ApplicationController
 
   def reject
 
-    @role_request.request_status = :rejected
+    @role_request.request_state = :rejected
     @role_request.approver_user = @current_user
     @role_request.save
 
