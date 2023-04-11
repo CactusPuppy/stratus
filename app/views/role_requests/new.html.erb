@@ -13,10 +13,20 @@
     ]) %>
   </div>
 
-  <div style="margin-top:2em;margin-bottom:2em;">
-    <%= form.label :description, "Description" %>
-    <div><%= form.text_area :description, size: "30x10" %></div>
+  <div class="my-6">
+    <%= form.label :duration, "Permission Grant Duration" %>
+    <%= form.select :requested_duration, options_for_select([
+      ["6 hours", "21600"],
+      ["24 hours", "86400"],
+      ["72 hours", "259200"]
+    ]) %>
   </div>
 
-  <%= form.submit %>
+  <div class="my-6">
+    <%= form.label :description, "Description" %>
+    <div><%= form.text_area :description, size: "30x10", required: true %></div>
+  </div>
+
+
+  <span class="bg-gray-300 border-2 border-gray-400 rounded p-2 hover:cursor-pointer hover:bg-gray-400 my-8"><%= form.submit "Submit Request", :class => "hover:cursor-pointer" %></span>
 <% end %>

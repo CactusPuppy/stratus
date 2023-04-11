@@ -1,6 +1,6 @@
 class RoleRequest < ApplicationRecord
   belongs_to :requester_user, class_name: :User
-  belongs_to :approver_user, class_name: :User
+  belongs_to :approver_user, class_name: :User, required: false
 
   enum request_state: { submitted: 0, approved: 1, rejected: 2, completed: 3 }
 

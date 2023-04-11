@@ -36,3 +36,8 @@
 
 # Ignore Bundle install directory
 /vendor/bundle
+
+test/
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

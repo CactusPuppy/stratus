@@ -36,7 +36,7 @@ class RoleRequestsController < ApplicationController
     request = RoleRequest.create(requester_user: @current_user, request_state: :submitted,
       requested_template_id: params[:role_request][:requested_template_id], description: params[:role_request][:description])
     unless request.save
-      flash[:error] = "Creating request failed"
+      flash[:error] = "Creating request failed: #{request.errors.full_messages}"
       redirect_to new_role_request_path
       return
     end

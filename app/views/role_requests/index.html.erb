@@ -5,19 +5,33 @@
   <% if flash[:notice] %>
     <p style="color: green;"><%= flash[:notice] %></p>
   <% end %>
+  <p>Hello <%= current_user.username %>!</p>
   <% if current_user.manager? %>
     <p>You are a manager</p>
     <%  %>
   <% else %>
     <p>You are a normal user</p>
   <% end %>
-  <%= button_to "New Request", new_role_request_path, method: :get %>
+  <div class=""><%= button_to "New Request", new_role_request_path, method: :get, class: "mt-2 p-2 bg-gray-300 rounded border-gray-400 border-2 hover:bg-gray-400 transition-colors" %></div>
+
+  <hr class="border-b-2 border-gray-500 my-6">
+
   <h2>Requests awaiting approval:</h2>
-  <%= render @role_requests %>
+  <% if @role_requests.present? %>
+    <%= render @role_requests %>
+  <% else %>
+    <p><i>No pending requests</i></p>
+  <% end %>
 
-  <h2>Approved requests:</h2>
-  <%= render @approved_role_requests %>
+  <% if @approved_role_requests.present? %>
+    <hr class="border-b-2 border-gray-500 my-6">
+    <h2>Approved requests:</h2>
+    <%= render @approved_role_requests %>
+  <% end %>
 
-  <h2>Rejected requests:</h2>
-  <%= render @rejected_role_requests %>
+  <% if @rejected_role_requests.present? %>
+    <hr class="border-b-2 border-gray-500 my-6">
+    <h2>Rejected requests:</h2>
+    <%= render @rejected_role_requests %>
+  <% end %>
 </main>

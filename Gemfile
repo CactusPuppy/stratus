@@ -48,7 +48,10 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use AWS SDK to talk to AWS IAM
-gem "aws-sdk-iam", "~> 1.75"
+gem "aws-sdk-iam", "~> 1.77"
+
+# Use Tailwind for easier CSS
+gem 'tailwindcss-rails', '~> 2.0', '>= 2.0.27'
 
 group :production do
   # Use PostgreSQL in production
@@ -63,7 +66,10 @@ group :development, :test do
   gem "sqlite3", "~> 1.4"
 
   # In-line debugger
-  gem "pry"
+  gem 'pry', '~> 0.14.2'
+
+  # Support for more pry things
+  gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
 end
 
 group :development do

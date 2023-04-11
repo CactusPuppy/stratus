@@ -7,3 +7,4 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.create(username: "employee1", password: "password123")
+User.create(username: "manager1", password: "password123")
